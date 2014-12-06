@@ -12,17 +12,23 @@
 import UIKit
 
 class ViewController: UIViewController {
-
     @IBOutlet weak var firstCardImageView: UIImageView!
     @IBOutlet weak var secondCardImageView: UIImageView!
     @IBOutlet weak var playRoundButton: UIButton!
     @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var playerScore: UILabel!
+    @IBOutlet weak var enemyScore: UILabel!
+    
     var cardNamesArray:[String] = ["ace", "card2", "card3", "card4", "card5", "card6", "card7", "card8", "card9", "card10", "card11", "card12","card13"]
+    
+    var playerScoreTotal = 0;
+    var enemyScoreTotal = 0;
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        self.playRoundButton.setTitle("Play", forState: UIControlState.Normal)
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,6 +62,25 @@ class ViewController: UIViewController {
         self.secondCardImageView.image = UIImage(named: secondCardString)
         
        // randomization done
+        
+        // Determine the higher card
+        if (firstRandomNumber > secondRandomNumber) {
+            
+            // TODO: first card is larger
+            playerScoreTotal += 1;
+            self.playerScore.text = String(playerScoreTotal);
+            
+        } else if (firstRandomNumber == secondRandomNumber) {
+           
+            // TODO: numbers are equal
+            
+        } else {
+            
+            //TODO: second card is larger
+            enemyScoreTotal+=1;
+            self.enemyScore.text = String(enemyScoreTotal);
+            
+        }
         
     }
     
